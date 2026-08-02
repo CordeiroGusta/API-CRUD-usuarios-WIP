@@ -1,4 +1,5 @@
-users = [
+#dados dos usuarios para esse projeto que é apenas para desenvolver conhecimento
+usuarios = [
     {
         "id": 1,
         "usuario": "fulano",
@@ -24,3 +25,12 @@ users = [
         "telefone": "4188776655"
     }
 ]
+
+#metodos
+def listar_usuarios():
+    return usuarios
+
+def listar_usuarios_id(id):
+    for usuario in usuarios:
+        if usuario['id'] == id:
+            return usuario

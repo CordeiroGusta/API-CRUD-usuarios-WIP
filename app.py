@@ -1,4 +1,5 @@
 from fastapi import FastAPI
+import users
 
 #Objetivo: Crud de usuários
 #Url: vai ser gerada pelo Uvicorn
@@ -12,4 +13,13 @@ from fastapi import FastAPI
 
 app = FastAPI()
 
+#GET geral
+@app.get('/users')
+def get_user():
+    return users.listar_usuarios()
 
+@app.get('/users/{id}')
+def get_user_por_id(id: int):
+    return users.listar_usuarios_id(id)
+
+@app.post('/users')
