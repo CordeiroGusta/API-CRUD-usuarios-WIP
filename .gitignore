@@ -1,0 +1,16 @@
+#ambiente virtual
+venv/
+
+#Arquivos criados automaticamente
+__pycache__/
+*.py[cod]
+
+#variaveis de ambiente
+.env
+
+#Configurações do VS Code
+.vscode/
+
+#arquivos do sistema
+.DS_Store
+Thumbs.db
