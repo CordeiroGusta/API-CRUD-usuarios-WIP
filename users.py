@@ -46,3 +46,9 @@ def atualizar_usuario(id, usuario_atualizado):
     for indice, usuario in enumerate(usuarios):
         if usuario['id'] == id:
             usuarios[indice] = usuario_atualizado
+            return usuario_atualizado
+
+def criar_usuario(usuario_novo):
+    '''Cria um novo usuario na base de dados'''
+    usuarios.append(usuario_novo)
+    return usuario_novo

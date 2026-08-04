@@ -22,7 +22,7 @@ class Usuario(BaseModel):
 
 app = FastAPI()
 
-#GET, geral, exibe todos os usuarios
+#GET, sem parametro, exibe todos os usuarios
 @app.get('/users')
 def get_user():
     return users.listar_usuarios()
@@ -37,4 +37,7 @@ def get_user_por_id(id: int):
 def put_atualizar_user (id: int, usuario: Usuario):
     return users.atualizar_usuario(id, usuario.model_dump())
 
-#POST, por ID, cadastra um usuario novo
+#POST, sem parametro, cadastra um usuario novo
+@app.post('/users')
+def post_novo_user(usuario: Usuario):
+    return users.criar_usuario(usuario.model_dump())
