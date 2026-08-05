@@ -41,3 +41,8 @@ def put_atualizar_user (id: int, usuario: Usuario):
 @app.post('/users')
 def post_novo_user(usuario: Usuario):
     return users.criar_usuario(usuario.model_dump())
+
+#DELETE, por ID, deleta o cadastro de um usuario
+@app.delete('/users/{id}')
+def delete_apagar_user(id: int):
+    return users.deletar_usuario(id)

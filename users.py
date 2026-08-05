@@ -52,3 +52,10 @@ def criar_usuario(usuario_novo):
     '''Cria um novo usuario na base de dados'''
     usuarios.append(usuario_novo)
     return usuario_novo
+
+def deletar_usuario(id):
+    '''Deleta um usuario que o id for correspondente'''
+    for indice,usuario in enumerate(usuarios):
+        if usuario['id'] == id:
+            del usuarios[indice]
+        return usuarios
