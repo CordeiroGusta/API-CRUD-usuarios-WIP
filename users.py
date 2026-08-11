@@ -46,11 +46,13 @@ def atualizar_usuario(id, usuario_atualizado):
     for indice, usuario in enumerate(usuarios):
         if usuario['id'] == id:
             usuarios[indice] = usuario_atualizado
+            usuarios.sort(key=lambda x: x['id'])
             return usuario_atualizado
 
 def criar_usuario(usuario_novo):
     '''Cria um novo usuario na base de dados'''
     usuarios.append(usuario_novo)
+    usuarios.sort(key=lambda x: x['id'])
     return usuario_novo
 
 def deletar_usuario(id):
@@ -58,4 +60,5 @@ def deletar_usuario(id):
     for indice,usuario in enumerate(usuarios):
         if usuario['id'] == id:
             del usuarios[indice]
-        return usuarios
+            return usuarios
+    return None
