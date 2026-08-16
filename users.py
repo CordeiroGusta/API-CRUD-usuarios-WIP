@@ -1,4 +1,3 @@
-#dados dos usuarios para esse projeto que é apenas para desenvolver conhecimento
 usuarios = [
     {
         "id": 1,
@@ -51,6 +50,9 @@ def atualizar_usuario(id, usuario_atualizado):
 
 def criar_usuario(usuario_novo):
     '''Cria um novo usuario na base de dados'''
+    for usuario in usuarios:
+        if usuario['id'] == usuario_novo['id']:
+            return None        
     usuarios.append(usuario_novo)
     usuarios.sort(key=lambda x: x['id'])
     return usuario_novo

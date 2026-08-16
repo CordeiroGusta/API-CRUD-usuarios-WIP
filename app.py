@@ -28,7 +28,7 @@ def put_atualizar_user (id: int, usuario: Usuario):
 
 @app.post('/api/v1/users')
 def post_novo_user(usuario: Usuario):
-    novo_usuario = users.criar_usuario(usuario.model_dump())
+    novo_usuario = users.criar_usuario(usuario.model_dump()) 
     return novo_usuario
 
 @app.delete('/api/v1/users/{id}')
