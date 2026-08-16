@@ -1,13 +1,6 @@
 from fastapi import FastAPI,HTTPException
-from pydantic import BaseModel
+from schemas.user_schema import criarUsuario, atualizarUsuario, Usuario
 import users
-
-class Usuario(BaseModel):
-    id: int
-    usuario: str
-    email: str
-    telefone: str
-    ativo: bool
 
 app = FastAPI()
 
@@ -22,8 +15,9 @@ def get_user_por_id(id: int):
     return usuario
 
 @app.put('/api/v1/users/{id}')
-def put_atualizar_user (id: int, usuario: Usuario):
-    usuario_atualizado = users.atualizar_usuario(id, usuario.model_dump())
+def put_atualizar_user (id: int, usuario: atualizarUsuario):
+    dados = usuario.model_dump(exclude_unset=True)
+    usuario_atualizado = users.atualizar_usuario(id, dados)
     return usuario_atualizado
 
 @app.post('/api/v1/users')

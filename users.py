@@ -44,7 +44,9 @@ def atualizar_usuario(id, usuario_atualizado):
     '''Atualiza os dados de um usuario que corresponder ao id fornecido'''
     for indice, usuario in enumerate(usuarios):
         if usuario['id'] == id:
-            usuarios[indice] = usuario_atualizado
+            usuario_existente = usuarios[indice]
+            usuario_existente.update(usuario_atualizado)
+            usuario_existente['id'] = id
             usuarios.sort(key=lambda x: x['id'])
             return usuario_atualizado
 
