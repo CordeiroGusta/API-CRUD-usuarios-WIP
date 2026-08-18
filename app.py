@@ -37,4 +37,21 @@ def post_novo_user(usuario: Usuario):
 @app.delete('/api/v1/users/{id}')
 def delete_apagar_user(id: int):
     usuario_deletado = users.deletar_usuario(id)
-    return usuario_deletado
+    if usuario_deletado == None:
+        raise HTTPException(
+            status_code=404,
+            detail= {
+                "status": 404,
+                "code": "USER_NOT_FOUND",
+                "message": "Usuario não encontrado  " 
+            }
+        )
+    else:
+        raise HTTPException(
+            status_code=204,
+            detail={
+                "status": 204,
+                "code": "NO_CONTENT",
+                "message": "Usuário apagado com sucesso"
+            }
+        )
