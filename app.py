@@ -12,6 +12,15 @@ def get_user():
 @app.get('/api/v1/users/{id}')
 def get_user_por_id(id: int):
     usuario = users.listar_usuarios_id(id)
+    if usuario == None:
+        raise HTTPException(
+            status_code=404,
+            detail= {
+                "status": 404,
+                "code": "USER_NOT_FOUND",
+                "message": "Usuario não encontrado  " 
+            }
+        )
     return usuario
 
 @app.put('/api/v1/users/{id}')
